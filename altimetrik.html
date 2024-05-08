@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#container{
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+}
+#container > div{
+display:flex;
+flex-direction:row;
+height:10%;
+}
+</style>
+</head>
+<body style="height: 100%;">
+
+<div id="container"></div>
+
+<script>
+let arrayData = [];
+for(let i=10;i>0;i--){
+let innerArray = [];
+for(let j=1;j<=10;j++){
+if(i%2==0)
+{
+innerArray.push((i-1)*10+(11-j));
+}
+else{
+innerArray.push((i-1)*10+(j));
+}
+}
+arrayData.push(innerArray);
+}
+
+for(let i=0;i<10;i++){
+const flexRow = document.createElement("div");
+for(let j=0;j<10;j++){
+const flexItem = document.createElement("div");
+flexItem.style.width="10%";
+flexItem.style.color="black";
+flexItem.style.border="1px solid black";
+flexItem.style.textAlign="center";
+flexItem.innerHTML = arrayData[i][j];
+if(arrayData[i][j]%2 ==0)
+flexItem.style.backgroundColor="orange";
+else
+flexItem.style.backgroundColor="white";
+flexRow.appendChild(flexItem);
+}
+document.getElementById("container").appendChild(flexRow);
+}
+</script>
+
+</body>
+</html>
